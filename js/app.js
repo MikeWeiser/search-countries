@@ -2,9 +2,41 @@ const init = () => {
 
     let searchButton = document.getElementById("search-btn");
     if (searchButton) {
-        searchButton.addEventListener("click", searchCountries);
+            searchButton.addEventListener("click", validateForm);
     }
     
+}
+
+const validateForm = () => {
+    
+    let searchField = document.getElementById('searchFieldId');
+    let typeField = document.getElementById('searchTypeId');
+
+    let searchFieldValue = searchField.value
+
+    searchFieldValue = searchFieldValue.trim();
+
+    let searchFieldLength = searchField.value.length;
+
+
+    if ((searchField.value.length).trim() == 0 && typeField.value.length == 0) {
+        typeField.style.borderColor = "red";
+        searchField.style.borderColor = "red";
+
+    } else if (searchField.value.length == 0) {
+        searchField.style.borderColor = "red";
+        typeField.style.borderColor = "gray";
+        
+    } else if (typeField.value.length == 0) {
+        typeField.style.borderColor = "red";
+        searchField.style.borderColor = "gray";
+
+    } else {
+        searchField.style.borderColor = "green";
+        typeField.style.borderColor = "green";
+        searchCountries();
+
+    }    
 }
 
 const searchCountries = () => {
@@ -13,19 +45,11 @@ const searchCountries = () => {
     document.getElementById("compiledResultsId").innerHTML = "";
 
 
-    let search_term = document.getElementById('searchFieldId').value;
+    let search_term = (document.getElementById('searchFieldId').value).trim();
     let search_type = document.getElementById('searchTypeId').value;
-
-        // consider better validation for search_term
-    if (search_type.value.length == 0 || search_term.value.length == 0 ) {
         
-        let searchField = document.getElementById('searchFieldId');
-        // searchField.setAttribute("style", "background-color", "red");
-        searchField.style.backgroundColor = "red";
-    } else {
-        
-        ajaxRequest(search_term, search_type);
-    }
+    ajaxRequest(search_term, search_type);
+    
     
 }
 
