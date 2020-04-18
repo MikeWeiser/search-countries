@@ -26,7 +26,7 @@ function processJSON($response_body, $searchType) {
     return $sortedJSON;
 }
 
-function readByName($client, $endpoint, $searchType) {
+function getData($client, $endpoint, $searchType) {
     try {
         $response = $client->request('GET', $endpoint);
         $response_body = $response->getBody();
@@ -38,14 +38,21 @@ function readByName($client, $endpoint, $searchType) {
         echo "</pre>";
         
         if ($ex->hasResponse()) {
-            echo $ex->getResponse();
-          
+            echo $ex->getResponse(); 
         }
+
+        nodataResponse();
     }
     $processedJSON = processJSON($response_body, $searchType); // do you want this here?
     print_r ($processedJSON);  
 
 }
+
+function nodataResponse() {
+    $phpResponse = "";
+    echo $phpResponse;
+}
+
 
 // logic when receiving GET from JS
 if (isset($_GET['term']) && isset($_GET['type'])) {
@@ -63,7 +70,7 @@ if (isset($_GET['term']) && isset($_GET['type'])) {
         $endpoint = "${url}name/${searchTerm}"; 
     } 
     
-    readByName($client, $endpoint, $searchType);
+    getData($client, $endpoint, $searchType);
 }
 
 

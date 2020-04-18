@@ -57,7 +57,7 @@ const ajaxRequest = (search_term, search_type) => {
     //console.log("in the ajaxRequest method");
     let request = new XMLHttpRequest();
     request.onreadystatechange =() => {
-        if (request.readyState == 4 && request.status ==200) {
+        if (request.readyState == 4 && request.status == 200) {
             let phpResponse = request.responseText;
             console.log(phpResponse);
             
@@ -75,6 +75,7 @@ const ajaxRequest = (search_term, search_type) => {
 }
 
 const buildSearchResultsTable = (phpResponse) => {
+    console.log("PHP RESPNSE" + phpResponse);
     let obj = JSON.parse(phpResponse);    
     let searchResultsDiv = document.getElementById("searchResultsId");
     let compiledResultsDiv = document.getElementById("compiledResultsId");
