@@ -1,6 +1,7 @@
 <?php
 
 require_once ('vendor/autoload.php');
+use GuzzleHttp\Exception\RequestException;
 
 function populationSort($a, $b) {
     return $b->population - $a->population;
@@ -29,28 +30,25 @@ function processJSON($response_body, $searchType) {
 function getData($client, $endpoint, $searchType) {
     try {
         $response = $client->request('GET', $endpoint);
+        //$response = $client->get($endpoint);
         $response_body = $response->getBody();
+        $processedJSON = processJSON($response_body, $searchType); // do you want this here?
+        print_r ($processedJSON);
 
     } catch (RequestException $ex) {
-        echo "HTTP Request failed\n";
-        echo "<pre>";
-        print_r($ex->getRequest());
-        echo "</pre>";
+        echo "";
+        //echo "HTTP Request failed\n";
+        //echo "<pre>";
+        //print_r($ex->getRequest());
+        //echo "</pre>";
         
         if ($ex->hasResponse()) {
-            echo $ex->getResponse(); 
+            print_r($ex->getResponse()); 
         }
-
-        nodataResponse();
+    
     }
-    $processedJSON = processJSON($response_body, $searchType); // do you want this here?
-    print_r ($processedJSON);  
+      
 
-}
-
-function nodataResponse() {
-    $phpResponse = "";
-    echo $phpResponse;
 }
 
 
