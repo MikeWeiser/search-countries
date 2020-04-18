@@ -6,6 +6,18 @@ img {
     max-width: 100px;
 }
 
+div ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+div ul ul {
+    display: block;
+    list-style: square inside;
+    padding-left: 10;
+}
+
+
 table {
     border-collapse: collapse;
     width: 100%;

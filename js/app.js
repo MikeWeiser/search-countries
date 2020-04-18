@@ -8,14 +8,20 @@ const init = () => {
 }
 
 const searchCountries = () => {
+    //clear previous search results
     document.getElementById("searchResultsId").innerHTML = "";
     document.getElementById("compiledResultsId").innerHTML = "";
+
+
     let search_term = document.getElementById('searchFieldId').value;
     let search_type = document.getElementById('searchTypeId').value;
 
         // consider better validation for search_term
-    if (search_type == "" || search_term == "") {
-        alert("Please select search type and enter a search term");
+    if (search_type.value.length == 0 || search_term.value.length == 0 ) {
+        
+        let searchField = document.getElementById('searchFieldId');
+        // searchField.setAttribute("style", "background-color", "red");
+        searchField.style.backgroundColor = "red";
     } else {
         
         ajaxRequest(search_term, search_type);
@@ -127,7 +133,7 @@ const buildSearchResultsTable = (phpResponse) => {
     compiledTable.appendChild(tableHeaderRow);
 
 
-    countryCountHeader.textContent = "Number of countries returned in your search: " + countryCount;
+    countryCountHeader.textContent = "Countries returned: " + countryCount;
     tableHeaderData1.textContent = "Region/Subregion     ";
     tableHeaderData2.textContent = "Total";
 

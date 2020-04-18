@@ -14,21 +14,25 @@
      
         <div class="container">
             <h1>Search Rest Countries API</h1>
-            <div class="form-group">
-              <label for="exampleFormControlSelect1">Search By:</label>
-              <select class="custom-select" id="searchTypeId" required>
-                <option value="">---Select a Search Type---</option>
-                <option value="1">Country</option>
-                <option value="2">Country Full Name</option>
-                <option value="3">Country Code</option>
-              </select>
-            </div>
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Search" name="name-search" id="searchFieldId">
-                <div class="input-group-append">
-                    <button class="btn btn-success" type="button" name="search-btn" id="search-btn">Search</button>
-                </div>
-            </div>
+            <form >
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Search By:</label>
+                    <select class="custom-select" id="searchTypeId" required>
+                      <option value="">---Select a Search Type---</option>
+                      <option value="1">Country</option>
+                      <option value="2">Country Full Name</option>
+                      <option value="3">Country Code</option>
+                    </select>
+                  </div>
+                  <div class="input-group mb-3">
+                      <input type="text" class="form-control" placeholder="Search" name="name-search" id="searchFieldId">
+                      <div class="input-group-append">
+                          <button class="btn btn-success" type="button" name="search-btn" id="search-btn">Search</button>
+                      </div>
+                  </div>
+
+            </form>
+            
             
             <div class="search_results" id="searchResultsId">
 
