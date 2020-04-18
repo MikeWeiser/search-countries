@@ -12,22 +12,22 @@ const validateForm = () => {
     let searchField = document.getElementById('searchFieldId');
     let typeField = document.getElementById('searchTypeId');
 
-    let searchFieldValue = searchField.value
-
+    let searchFieldValue = searchField.value;
     searchFieldValue = searchFieldValue.trim();
 
-    let searchFieldLength = searchField.value.length;
+    let searchFieldLength = searchFieldValue.length;
 
-
-    if ((searchField.value.length).trim() == 0 && typeField.value.length == 0) {
+    let typeFieldLength = typeField.value.length;
+    
+    if (searchFieldLength == 0 && typeFieldLength == 0) {
         typeField.style.borderColor = "red";
         searchField.style.borderColor = "red";
 
-    } else if (searchField.value.length == 0) {
+    } else if (searchFieldLength == 0) {
         searchField.style.borderColor = "red";
         typeField.style.borderColor = "gray";
         
-    } else if (typeField.value.length == 0) {
+    } else if (typeFieldLength == 0) {
         typeField.style.borderColor = "red";
         searchField.style.borderColor = "gray";
 
