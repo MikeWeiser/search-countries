@@ -37,10 +37,6 @@ function getData($client, $endpoint, $searchType) {
 
     } catch (RequestException $ex) {
         echo "";
-        //echo "HTTP Request failed\n";
-        //echo "<pre>";
-        //print_r($ex->getRequest());
-        //echo "</pre>";
         
         if ($ex->hasResponse()) {
             print_r($ex->getResponse()); 
