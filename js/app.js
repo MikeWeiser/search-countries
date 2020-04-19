@@ -207,7 +207,7 @@ const buildSearchResultsTable = (phpResponse) => {
     } else {
         const searchResultsDiv = document.getElementById("searchResultsId");
         const noResultsMessage = document.createElement('h2');
-        noResultsMessage.textContent = "Sorry, no results were found";
+        noResultsMessage.textContent = "Sorry, no results were found.";
         searchResultsDiv.appendChild(noResultsMessage);
     }
 }
