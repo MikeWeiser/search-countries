@@ -1,3 +1,14 @@
+.jumbotron {
+    background-image: url("../world-map.jpg");
+    background-size: cover;
+    text-align: center;
+  }
+
+h1 {
+    font-size: 4em;
+
+}
+
 h2  {
     color: blue;
 }
@@ -11,10 +22,17 @@ div ul {
     padding-left: 0;
 }
 
+
 div ul ul {
-    display: block;
-    list-style: square inside;
-    padding-left: 10;
+    list-style-type: square;
+    overflow: hidden;
+    padding-left: 20px;
+}
+
+div ul ul li {
+    display: inline-block;
+    padding-left: 10px;
+  
 }
 
 

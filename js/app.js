@@ -1,10 +1,12 @@
 const init = () => {
 
+  
+    let searchField = document.getElementById("searchFieldId");
     let searchButton = document.getElementById("search-btn");
+
     if (searchButton) {
-            searchButton.addEventListener("click", validateForm);
+        searchButton.addEventListener("click", validateForm);
     }
-    
 }
 
 const validateForm = () => {
@@ -36,14 +38,12 @@ const validateForm = () => {
         typeField.style.borderColor = "green";
         searchCountries();
 
-    }    
+    }  
+
+    
 }
 
 const searchCountries = () => {
-    //clear previous search results
-    document.getElementById("searchResultsId").innerHTML = "";
-    document.getElementById("compiledResultsId").innerHTML = "";
-
 
     let search_term = (document.getElementById('searchFieldId').value).trim();
     let search_type = document.getElementById('searchTypeId').value;
@@ -75,6 +75,9 @@ const ajaxRequest = (search_term, search_type) => {
 
 const buildSearchResultsTable = (phpResponse) => {
     
+    document.getElementById("searchResultsId").innerHTML = "";
+    document.getElementById("compiledResultsId").innerHTML = "";
+
     if (phpResponse.substring(0,2) == "[{") {   
 
         let obj = JSON.parse(phpResponse);
@@ -107,6 +110,7 @@ const buildSearchResultsTable = (phpResponse) => {
     
             const header = document.createElement('h2');
             const list = document.createElement('ul');
+            //const nativeName = document.createElement('li');
             const alphaCode2 = document.createElement('li');
             const alphaCode3 = document.createElement('li');
             const flagImg = document.createElement('p');
@@ -117,25 +121,27 @@ const buildSearchResultsTable = (phpResponse) => {
             const languages = document.createElement('ul');
      
             header.textContent = obj[i].name;
-            flagImg.innerHTML = "<img src=\"" + obj[i].flag + "\">"; // make this an image!!
+            flagImg.innerHTML = "<img src=\"" + obj[i].flag + "\">";
+            //nativeName.textContent = "Native name: " + obj[i].nativeName;
             alphaCode2.textContent = "Alpha code 2: " + obj[i].alpha2Code;
             alphaCode3.textContent = "Alpha code 3: " + obj[i].alpha3Code;
             region.textContent = "Region: " + obj[i].region;
             subregion.textContent = "Subregion: " + obj[i].subregion;
             population.textContent = "Populatiion: " + obj[i].population;
-            languageList.textContent = "Languages:";
+            languageList.textContent = "Languages: ";
     
             const objLanguages = obj[i].languages;
     
             for (let j = 0; j < objLanguages.length; j++) {
                 const languageListItem = document.createElement('li');
-                languageListItem.textContent = objLanguages[j].name;
+                languageListItem.innerHTML = "&#8226; " + objLanguages[j].name;
                 languages.appendChild(languageListItem);
             }
     
             searchResultsDiv.appendChild(header);
             searchResultsDiv.appendChild(flagImg);
             searchResultsDiv.appendChild(list);
+            //list.appendChild(nativeName);
             list.appendChild(alphaCode2);
             list.appendChild(alphaCode3);
             list.appendChild(region);
