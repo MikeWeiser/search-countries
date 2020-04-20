@@ -127,7 +127,7 @@ const buildSearchResultsTable = (phpResponse) => {
             alphaCode3.textContent = "Alpha code 3: " + obj[i].alpha3Code;
             region.textContent = "Region: " + obj[i].region;
             subregion.textContent = "Subregion: " + obj[i].subregion;
-            population.textContent = "Populatiion: " + obj[i].population;
+            population.textContent = "Population: " + obj[i].population;
             languageList.textContent = "Languages: ";
     
             const objLanguages = obj[i].languages;
