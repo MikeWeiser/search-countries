@@ -1,2 +1,2 @@
-# infosec-test
+# search-countries
 web app for searching restcountries.eu api
